@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 	int i, count = 0;
 
 	if (format == NULL)
-		return (0);
+		return (-1);
 
 	va_start(args, format);
 
@@ -39,8 +39,16 @@ int _printf(const char *format, ...)
 				count++;
 				break;
 			case 'd':
-			  _putchar(signed int 
-			        
+			        i = va_arg(arg, int);
+			        if(i < 0)
+			    {
+			        i = -i;
+			        _putchar('-');
+			    }
+			        convert(i, 10);
+			        break;
+		       
+				
 			default:
 				_putchar('%');
 				_putchar(format[i]);
