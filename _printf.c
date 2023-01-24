@@ -1,46 +1,49 @@
-#include <stdio.h>
+#include "main.h"
 #include <stdarg.h>
 /**
  *_printf - function that prints output according to format
  *@format: string to be printed
- *Return: str;
+ *Return: number of characters printed.
  */
 
 int _printf(const char *format, ...)
 {
-va_list args;
+	char cont *str, *s;
+	va_list args;
+	int count = 0;
 
-va_start(args, format);
-char cont *str = format;
-for (str = format; *str != '\0'; str++)
-{
-while (*str != '%' || *str != '\0')
-putchar(*str);
-if (*str == '%')
-{
-str++;
-switch (*str)
-{
-case 'c':
-putchar(va_arg(args, int));
-str++;
-break;
-case 's':
-puts(va_arg(args, char *));
-str++;
-break;
-case '%':
-putchar('%');
-str++;
-break;
-}
-}
-else
-{
-putchar(*str);
-str++;
-}
-}
-va_end(args);
-return (str);
+	va_start(args, format);
+
+	for (str = format; *str != '\0'; str++)
+	{
+		while (*str != '%' || *str != '\0')
+		{
+			_putchar(*str);
+			count++;
+			str++;
+		}
+
+		str++;
+		switch (*str)
+		{
+		case 'c':
+			putchar(va_arg(args, int));
+			count++;
+			str++;
+			break;
+		case 's':
+			s = va_arg(args, char*);
+			count += print_str(s);
+			str++;
+			break;
+		case ' % ':
+			putchar(' % ');
+			count++;
+			str++;
+			break;
+		}
+	}
+	va_end(args);
+
+	return (count);
 }
