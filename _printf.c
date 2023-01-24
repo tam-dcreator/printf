@@ -3,44 +3,44 @@
 /**
  *_printf - function that prints output according to format
  *@format: string to be printed
- *Return: count;
+ *Return: str;
  */
 
 int _printf(const char *format, ...)
 {
 va_list args;
-int count = 0;
 
 va_start(args, format);
-for (int i = 0; format[i] != '\0'; i++)
+char cont *str = format;
+for (str = format; *str != '\0'; str++)
 {
-if (format[i] == '%')
+while (*str != '%' || *str != '\0')
+putchar(*str);
+if (*str == '%')
 {
-i++;
-switch (format[i])
+str++;
+switch (*str)
 {
 case 'c':
 putchar(va_arg(args, int));
-count++;
+str++;
 break;
 case 's':
-fputs(va_arg(args, char *), stdout);
-count += strlen(va_arg(args, char *));
+puts(va_arg(args, char *));
+str++;
 break;
 case '%':
 putchar('%');
-count++;
-break;
-default:
+str++;
 break;
 }
 }
 else
 {
-putchar(format[i]);
-count++;
+putchar(*str);
+str++;
 }
 }
 va_end(args);
-return (count);
+return (str);
 }
