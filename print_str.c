@@ -20,7 +20,7 @@ int print_str(char *s)
 	}
 	else
 	{
-		return (print_str("(null)"));
+		return (print_str("null"));
 	}
 
 	return (count);
