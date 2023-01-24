@@ -38,6 +38,9 @@ int _printf(const char *format, ...)
 				_putchar('%');
 				count++;
 				break;
+			case 'd':
+			  _putchar(signed int 
+			        
 			default:
 				_putchar('%');
 				_putchar(format[i]);
