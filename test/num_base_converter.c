@@ -1,3 +1,4 @@
+#include "main.h"
 /**
  *converter - Function to convert numbers to their respective base
  *@num: Number to convert

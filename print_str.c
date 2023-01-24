@@ -7,11 +7,15 @@
  */
 int print_str(char *s)
 {
-	if (s != NUll)
+	int count = 0;
+
+	if (s != NULL)
 	{
 		while (*s)
 		{
-			_putchar(*s++);
+			_putchar(*s);
+			count++;
+			s++;
 		}
 	}
 	else
@@ -19,5 +23,5 @@ int print_str(char *s)
 		return (print_str("(null)"));
 	}
 
-	return (_strlen(s));
+	return (count);
 }
