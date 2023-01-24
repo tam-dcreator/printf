@@ -1,2 +1,4 @@
 # File formats to ignore in prinf project
 *.c~
+main.c
+*.out
