@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdarg.h>
 
+#define NULL ((void *)0)
+
 int _printf(const char *format, ...);
 char *converter(int num, int num_base);
 int _putchar(char c);
