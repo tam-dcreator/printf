@@ -8,27 +8,36 @@
  */
 int converter(unsigned int num, int num_base)
 {
-	/* Function converts num to the appropriate base by taking the*/
-	/*remainder and getting the equivalent value from numbers, then save*/
-	/*it in a buffer using ptr*/
+	/* Function converts num to the base num_base, by passing the */
+	/* modulo value into numbers[] to get the char equivalent */
+	/* then save it in buffer[61] using ptr, starting from the end. */
 	static const char numbers[] = "0123456789ABCDEF";
-	char buffer[22];
+	char buffer[61];
 	char *ptr;
-	int i, counter = 0, j = 0;
+	int counter = 0;
 
-	ptr = &buffer[21];
+	ptr = &buffer[60];
 	*ptr = '\0';
-	j++;
 
 	do {
-		*--ptr = numbers[num % num_base];
-		j++;
+		ptr--;
+		*ptr = numbers[num % num_base];
+		counter++;
 		num = num / num_base;
 	} while (num != 0);
 
-	for (i = (22 - j); j < 21; j++)
+	/*Check if total chars inputed for a binary conversion is a multiple*/
+	/* of 4, if its not, add a leading zero*/
+	if (num_base == 2 && counter % 4 != 0)
 	{
-		counter += _putchar(buffer[i]);
+		ptr--;
+		*ptr = numbers[num];
+		counter++;
 	}
+
+	/*Print buffer value, starting from the current address of ptr */
+	while (*ptr != '\0')
+		_putchar(*ptr++);
+
 	return (counter);
 }

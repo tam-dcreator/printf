@@ -7,7 +7,6 @@
 int _printf(const char *format, ...);
 int converter(unsigned int num, int num_base);
 int _putchar(char c);
-int _strlen(char *s);
 int print_str(char *s);
 int print_int(long int);
 

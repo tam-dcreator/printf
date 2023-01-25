@@ -22,9 +22,8 @@ int _printf(const char *format, ...)
 			_putchar(format[i]);
 			count++;
 		}
-		else
+		else if (format[++i] != '\0')
 		{
-			i++;
 			switch (format[i])
 			{
 			case 'c':
@@ -44,11 +43,32 @@ int _printf(const char *format, ...)
 			case 'i':
 				count += print_int((long)(va_arg(args, int)));
 				break;
+			case 'u':
+				count += print_int
+					((long)(va_arg(args, unsigned int)));
+				break;
+			case 'b':
+				count += converter(va_arg(args, int), 2);
+				break;
+			case 'o':
+				count += converter(va_arg(args, int), 8);
+				break;
+			case 'x':
+				count += converter(va_arg(args, int), 16);
+				break;
+			case 'X':
+				count += converter(va_arg(args, int), 16);
+				break;
 			default:
 				_putchar('%');
 				_putchar(format[i]);
 				count += 2;
 			}
+		}
+		else
+		{
+			_putchar(format[i]);
+			count++;
 		}
 	}
 	va_end(args);
