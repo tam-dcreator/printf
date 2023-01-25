@@ -26,15 +26,6 @@ int converter(unsigned int num, int num_base)
 		num = num / num_base;
 	} while (num != 0);
 
-	/*Check if total chars inputed for a binary conversion is a multiple*/
-	/* of 4, if its not, add a leading zero*/
-	if (num_base == 2 && counter % 4 != 0)
-	{
-		ptr--;
-		*ptr = numbers[num];
-		counter++;
-	}
-
 	/*Print buffer value, starting from the current address of ptr */
 	while (*ptr != '\0')
 		_putchar(*ptr++);
