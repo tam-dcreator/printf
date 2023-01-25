@@ -22,7 +22,7 @@ int _printf(const char *format, ...)
 			_putchar(format[i]);
 			count++;
 		}
-		else if (format[++i] != '\0')
+		else if (format[i] == '%' && format[++i] != '\0')
 		{
 			switch (format[i])
 			{
@@ -67,7 +67,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			_putchar(format[i]);
+			_putchar('\n');
 			count++;
 		}
 	}
