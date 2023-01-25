@@ -68,7 +68,7 @@ int _printf(const char *format, ...)
 		else
 		{
 			_putchar(format[i]);
-			count += 1;
+			count--;
 		}
 	}
 	va_end(args);
