@@ -39,16 +39,11 @@ int _printf(const char *format, ...)
 				count++;
 				break;
 			case 'd':
-			        i = va_arg(arg, int);
-			        if(i < 0)
-			    {
-			        i = -i;
-			        _putchar('-');
-			    }
-			        convert(i, 10);
-			        break;
-		       
-				
+				count += print_int((long)(va_arg(args, int)));
+				break;
+			case 'i':
+				count += print_int((long)(va_arg(args, int)));
+				break;
 			default:
 				_putchar('%');
 				_putchar(format[i]);
